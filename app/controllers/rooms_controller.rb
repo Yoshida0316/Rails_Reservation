@@ -2,14 +2,14 @@ class RoomsController < ApplicationController
 
   before_action :authenticate_user!, except: [:show,:new]#showアクションではログインを確認しない
   before_action :set_q, only: [:index, :search]
-  helper_method :current_user
+  #helper_method :current_user
  
   def index
-   @rooms = Room.all
+   @rooms = current_user.rooms
   end
   
   def new
-     @room = Room.new
+     @room = current_user.rooms.new
   end
  
   def create

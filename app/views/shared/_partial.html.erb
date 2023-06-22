@@ -8,8 +8,13 @@
         <input type="checkbox" id="menu-btn-check">
         <label for="menu-btn-check" class="menu-btn"><span></span></label>
               <div class="menu-content">
-            <ul>
-
+            <ul>        
+    <% if current_user.image.attached? %>
+    <%= image_tag current_user.image ,size:"50x50"%>
+    <% else %>
+    <%= image_tag 'https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png' %>
+    <% end %>  
+          <%= current_user.name %>
                 <li>
                     <%=link_to "施設を新規登録する", :new_room %>
                 </li>
